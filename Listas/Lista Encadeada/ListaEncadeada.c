@@ -75,7 +75,7 @@ int InsereInicio(pLista_t *li, aluno_t *al){
     return 1;
 }
 
-int InsereFim(pLista_t *li, aluno_t *al){
+int InsereFim(pLista_t *li, aluno_t *al){ //TODO: Arrumar bug de lista vazia.
     if(li == NULL) return -1;
 
     elemento *no = (elemento *) malloc(sizeof(elemento));
@@ -85,6 +85,12 @@ int InsereFim(pLista_t *li, aluno_t *al){
     no->next = NULL;
 
     elemento *aux = *li;
+
+    if(aux == NULL){
+        *li = no;
+        return 1;
+    }
+
     while(aux->next != NULL)
         aux = aux->next;
     aux->next = no;
