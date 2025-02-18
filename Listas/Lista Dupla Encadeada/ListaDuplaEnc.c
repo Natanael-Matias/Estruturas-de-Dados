@@ -195,3 +195,37 @@ int Remove(pLista *li, int mat){
     
     return 1;
 }
+
+int ConsultaPosicao(pLista *li, int pos, aluno_t *al){
+    if(li == NULL) return -1;
+    if(*li == NULL || pos <= 0) return 0;
+
+    elemento_t *no = *li;
+    int i = 1;
+
+    while(no != NULL && i < pos){
+        no = no->next;
+        i++;
+    }
+
+    if(no == NULL) return 0;
+
+    *al = *(no->dados_aluno);
+    
+    return 1;
+}
+
+int ConsultaConteudo(pLista *li, int mat, aluno_t *al){
+    if(li == NULL) return -1;
+    if(*li == NULL) return 0;
+
+    elemento_t *no = *li;
+    while(no != NULL && no->dados_aluno->matricula != mat)
+        no = no->next;
+
+    if(no == NULL) return 0;
+
+    *al = *(no->dados_aluno);
+    
+    return 1;
+}

@@ -25,3 +25,7 @@ int InsereMeio(pLista *li, aluno_t *al);
 int RemoveInicio(pLista *li);
 int RemoveFim(pLista *li);
 int Remove(pLista *li, int mat);
+
+// Consulta na lista
+int ConsultaPosicao(pLista *li, int mat, aluno_t *al);
+int ConsultaConteudo(pLista *li, int mat, aluno_t *al);
