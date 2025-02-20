@@ -25,16 +25,16 @@ void main(void){
         printf("Lista vazia.\n");
     printf("\n");
 
-    RemoveItem(head, 8);
-    if(!ShowLista(head))
-        printf("Lista vazia.\n");
-    printf("\n");
+    aluno_t recuperaAluno;
+    recuperaAluno.matricula = 0;
+    ConsultaConteudo(head, &recuperaAluno, 8);
+    printf("%d\n", recuperaAluno.matricula);
 
-    RemoveItem(head, 3);
-    if(!ShowLista(head))
-        printf("Lista vazia.\n");
-    printf("\n");
+    ConsultaConteudo(head, &recuperaAluno, 12);
+    printf("%d\n", recuperaAluno.matricula);
     
+    ConsultaConteudo(head, &recuperaAluno, 14);
+    printf("%d\n", recuperaAluno.matricula);
 
     LiberaLista(head);
 }

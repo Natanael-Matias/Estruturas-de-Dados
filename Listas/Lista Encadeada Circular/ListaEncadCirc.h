@@ -27,3 +27,5 @@ int RemoveFim(pLista_t *li);
 int RemoveItem(pLista_t *li, int mat);
 
 // Consulta na lista
+int ConsultaPosicao(pLista_t *li, aluno_t *al, int pos);
+int ConsultaConteudo(pLista_t *li, aluno_t *al, int mat);
