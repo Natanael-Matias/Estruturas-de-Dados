@@ -75,7 +75,7 @@ int InsereInicio(pLista_t *li, aluno_t *al){
     return 1;
 }
 
-int InsereFim(pLista_t *li, aluno_t *al){ //TODO: Arrumar bug de lista vazia.
+int InsereFim(pLista_t *li, aluno_t *al){
     if(li == NULL) return -1;
 
     elemento *no = (elemento *) malloc(sizeof(elemento));
@@ -105,16 +105,40 @@ int InsereMeio(pLista_t *li, aluno_t *al){
     if(no == NULL) return 0;
 
     no->dados_alunos = al;
+    no->next = NULL;
 
-    elemento *anterior, *atual = *li;
+    if(*li == NULL){
+        *li = no;
+        return 1;
+    }
 
+    if((*li)->next == NULL){
+        if((*li)->dados_alunos->matricula > al->matricula){
+            no->next = *li;
+            *li = no;
+        }
+        else
+            (*li)->next = no;
+        return 1;
+    }
+    
+    elemento *anterior = NULL, *atual = *li;
+    
     while(atual->next != NULL && atual->dados_alunos->matricula < al->matricula){
         anterior = atual;
         atual = atual->next;
     }
-    
-    anterior->next = no;
-    no->next = atual;
+
+    if(anterior == NULL && atual->dados_alunos->matricula > al->matricula){
+        no->next = atual;
+        *li = no;    
+    }
+    else if(atual->dados_alunos->matricula > al->matricula){
+        anterior->next = no;
+        no->next = atual;
+    }
+    else
+        atual->next = no;
 
     return 1;
 }
